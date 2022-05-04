@@ -95,13 +95,13 @@ public class HotelController {
 		
 		var hotelModel = HotelModelOptional.get(); 
 		BeanUtils.copyProperties(hotelDto, hotelModel);
-		
+		/*
 		hotelModel.setId(HotelModelOptional.get().getId());
 		hotelModel.setDataRegisto(HotelModelOptional.get().getDataRegisto());
 		hotelModel.setEstado(HotelModelOptional.get().getEstado());
 		hotelModel.setUtilizadorReg(HotelModelOptional.get().getUtilizadorReg());
 		
-		
+		*/
 		
 		return ResponseEntity.status(HttpStatus.OK).body(hotelservice.save(hotelModel));
 		

@@ -11,8 +11,8 @@ public class DepartamentoDto {
 
 	@NotBlank
 	private String nome;
-	@NotBlank
-	private HotelModel hotelFk;
+	/*@NotBlank
+	//private HotelModel hotelFk;
 
 	public HotelModel getHotelFk() {
 		return hotelFk;
@@ -21,7 +21,7 @@ public class DepartamentoDto {
 	public void setHotelFk(HotelModel hotelFk) {
 		this.hotelFk = hotelFk;
 	}
-
+*/
 	public String getNome() {
 		return nome;
 	}

@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -56,5 +57,21 @@ public class DepartamentoService {
 		return departamentorepository.save(departamentoModel);
 
 	}
+	
+	@Transactional
+	public DepartamentoModel saves(DepartamentoModel departamentoModel) {
+		
+		return departamentorepository.save(departamentoModel);
+	}
 
-}
+
+
+	
+	public DepartamentoModel  findByIds(UUID id){
+		Optional<DepartamentoModel> obj = departamentorepository.findById(id);
+
+		return obj.orElseThrow(() -> new ObjectNotFoundException(id, null));
+
+	}
+
+} 
