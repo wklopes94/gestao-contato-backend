@@ -1,6 +1,7 @@
 package com.oasis.apigestmenu.models;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -29,13 +30,13 @@ public class TipoColaboradorModel implements Serializable {
 	@Column(name = "utilizador")
 	private String utilizador;
 	@Column(name = "data_registo")
-	private String dataRegisto;
+	private LocalDateTime dataRegisto;
 	
 	@OneToMany(mappedBy = "tipoColabFk")
 	private List<ColaboradorModel> colaboradorModel = new ArrayList<>();
 	
 	
-	public TipoColaboradorModel(UUID id, String tipoColaborador, String utilizador, String dataRegisto) {
+	public TipoColaboradorModel(UUID id, String tipoColaborador, String utilizador, LocalDateTime dataRegisto) {
 		super();
 		this.id = id;
 		this.tipoColaborador = tipoColaborador;
@@ -70,10 +71,10 @@ public class TipoColaboradorModel implements Serializable {
 	public void setUtilizador(String utilizador) {
 		this.utilizador = utilizador;
 	}
-	public String getDataRegisto() {
+	public LocalDateTime getDataRegisto() {
 		return dataRegisto;
 	}
-	public void setDataRegisto(String dataRegisto) {
+	public void setDataRegisto(LocalDateTime dataRegisto) {
 		this.dataRegisto = dataRegisto;
 	}
 	public static long getSerialversionuid() {

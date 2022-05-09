@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -80,6 +81,20 @@ public class DepartamentoController {
 		var departamentoModel = departamentoModelOptional.get();
 		BeanUtils.copyProperties(departamentoDto, departamentoModel);
 		return ResponseEntity.status(HttpStatus.OK).body(service.saves(departamentoModel));
+
+	}
+
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Object> deleteDepartamento(@PathVariable(value = "id") UUID id) {
+		Optional<DepartamentoModel> DepartamentoModelOptional = service.findById(id);
+		if (!DepartamentoModelOptional.isPresent()) {
+
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Hotel Not Found.");
+
+		}
+
+		service.delete(DepartamentoModelOptional.get());
+		return ResponseEntity.status(HttpStatus.OK).body("Hotel deleted successfuly");
 
 	}
 

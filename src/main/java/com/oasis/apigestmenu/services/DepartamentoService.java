@@ -1,5 +1,7 @@
 package com.oasis.apigestmenu.services;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -53,25 +55,25 @@ public class DepartamentoService {
 		Optional<HotelModel> hotel = hotelService.findById(id_hotel);
 
 		departamentoModel.setHotelFk(hotel.get());
+		departamentoModel.setDataRegisto(LocalDateTime.now(ZoneId.of("UTC")));
+		departamentoModel.setUtilizador("Samuel Lopes");
+		departamentoModel.setEstado("A");
 
 		return departamentorepository.save(departamentoModel);
 
 	}
-	
+
 	@Transactional
 	public DepartamentoModel saves(DepartamentoModel departamentoModel) {
-		
+
 		return departamentorepository.save(departamentoModel);
 	}
 
-
-
-	
-	public DepartamentoModel  findByIds(UUID id){
+	public DepartamentoModel findByIds(UUID id) {
 		Optional<DepartamentoModel> obj = departamentorepository.findById(id);
 
 		return obj.orElseThrow(() -> new ObjectNotFoundException(id, null));
 
 	}
 
-} 
+}

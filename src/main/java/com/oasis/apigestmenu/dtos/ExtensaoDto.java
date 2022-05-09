@@ -1,11 +1,26 @@
 package com.oasis.apigestmenu.dtos;
 
-import javax.validation.constraints.NotBlank;
+
 
 public class ExtensaoDto {
 	
-	@NotBlank
+	
 	private Integer numero;
+	
+	private String hotel;
+
+	public String getHotel() {
+		return hotel;
+	}
+
+	public void setHotel(String hotel) {
+		this.hotel = hotel;
+	}
+
+	public ExtensaoDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Integer getNumero() {
 		return numero;

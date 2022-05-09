@@ -22,9 +22,9 @@ public class ColaboradorDto {
 	private String emailColab;
 	@NotBlank
 	private String enderecoColab;
-	@NotBlank
+	//@NotBlank
 	private String utilizador;
-	@NotBlank
+	//@NotBlank
 	private LocalDateTime dataRegisto;
 	@NotBlank
 	private String numeroRh;

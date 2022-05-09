@@ -1,18 +1,13 @@
 package com.oasis.apigestmenu.dtos;
-
-import javax.validation.constraints.NotBlank;
-
-
-
 import com.oasis.apigestmenu.models.HotelModel;
 
 public class DepartamentoDto {
 	
 
-	@NotBlank
+
 	private String nome;
-	/*@NotBlank
-	//private HotelModel hotelFk;
+
+	private HotelModel hotelFk;
 
 	public HotelModel getHotelFk() {
 		return hotelFk;
@@ -21,7 +16,7 @@ public class DepartamentoDto {
 	public void setHotelFk(HotelModel hotelFk) {
 		this.hotelFk = hotelFk;
 	}
-*/
+
 	public String getNome() {
 		return nome;
 	}
