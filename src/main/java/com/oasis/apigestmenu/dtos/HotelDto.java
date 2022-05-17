@@ -1,11 +1,13 @@
 package com.oasis.apigestmenu.dtos;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 public class HotelDto {
 	
 
-	@NotBlank
+
+	@NotEmpty(message ="Campo NOME Requerido")
 	private String nome;
 	@NotBlank
 	private String numeroFixo;

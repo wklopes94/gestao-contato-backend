@@ -22,6 +22,7 @@ import com.oasis.apigestmenu.dtos.HotelDto;
 import com.oasis.apigestmenu.models.HotelModel;
 import com.oasis.apigestmenu.services.HotelService;
 
+
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -53,6 +54,8 @@ public class HotelController {
 	
 	@GetMapping
 	public ResponseEntity<List<HotelModel>> getAll(){
+		
+		
 		return ResponseEntity.status(HttpStatus.OK).body(hotelservice.findAll());
 		
 	}
@@ -60,12 +63,18 @@ public class HotelController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> getOneHotel(@PathVariable(value="id") UUID id){
 		Optional<HotelModel> HotelModelOptional = hotelservice.findById(id);
+		
+		
+		
 		if(!HotelModelOptional.isPresent()) {
 			
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Hotel Not Found.");
 			
 		}
+		
 		return ResponseEntity.status(HttpStatus.OK).body(HotelModelOptional.get());
+		
+		
 		
 	}
 	
@@ -89,20 +98,11 @@ public class HotelController {
 		if(!HotelModelOptional.isPresent()) {
 			
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Hotel Not Found.");
-			
+	
 		}
-		
 		
 		var hotelModel = HotelModelOptional.get(); 
 		BeanUtils.copyProperties(hotelDto, hotelModel);
-		/*
-		hotelModel.setId(HotelModelOptional.get().getId());
-		hotelModel.setDataRegisto(HotelModelOptional.get().getDataRegisto());
-		hotelModel.setEstado(HotelModelOptional.get().getEstado());
-		hotelModel.setUtilizadorReg(HotelModelOptional.get().getUtilizadorReg());
-		
-		*/
-		
 		return ResponseEntity.status(HttpStatus.OK).body(hotelservice.save(hotelModel));
 		
 	}
